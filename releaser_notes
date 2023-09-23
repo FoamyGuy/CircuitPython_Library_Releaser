@@ -1,0 +1,10 @@
+
+gh release view [tag] --json createdAt
+
+
+print the info for latest release
+gh release list -L 1 | awk 2
+
+
+print the date of the latest commit
+git log -1 --pretty='format:%cd' --date=format:'%Y-%m-%dT%H:%M:%SZ'
