@@ -1,9 +1,12 @@
+import subprocess
 import time
 from compare_release_with_latest_commit import needs_new_release
 from get_pypi_name import get_pypi_name
 from create_release_notes import create_release_notes
 from make_release import make_release
 from get_release_info import get_release_info
+
+result = subprocess.getoutput("git checkout main")
 
 if needs_new_release():
     release_info = get_release_info()

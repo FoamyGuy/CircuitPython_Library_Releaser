@@ -9,7 +9,7 @@ def create_release_notes(pypi_name):
         pypi_name=pypi_name
     )
 
-    f = open("../release_notes.md", "w")
+    f = open("release_notes.md", "w")
     f.write(_rendered_template_text)
     f.close()
 
