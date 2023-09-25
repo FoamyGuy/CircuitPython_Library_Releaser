@@ -1,8 +1,21 @@
-# missing_type_issue_maker
+# Automated GitHub Release Maker
 
-command to run:
+## Requirements
+
+- git
+- gh (github CLI)
+- Python
+- toml python library
+- Jinja2 python library
+
+To run the release automation:
 ```
-git submodule foreach "python ../../../copy_type_finding_files.py;python run_on_each.py"
+git submodule foreach "python ../../../copy_release_making_files.py;python run_on_each.py"
+```
+
+You can redirect the output to a log file like this:
+```
+git submodule foreach "python ../../../copy_release_making_files.py;python run_on_each.py" > automation_log.txt
 ```
 
 ## Notes
@@ -26,5 +39,7 @@ Use a virtual environment if you are in a context where Python 2 exists so that 
    - `remove_submodules.py`
 3. Run `list_submodules.py` it will create `drivers.txt` and `helpers.txt`
 4. Delete / Remove any libraries you want _**included**_ in the subset from these files. i.e. (if you want to run on only `acep7in` and `adxl34x` then delete those two lines from the drivers.txt file and leave all other lines). _**Ensure there are no blank lines in either txt file!**_
-5. Run `remove_submodules.py` it will remove all libraries that are present in `drivers.txt` and `helpers.txt` (any libraries not in those files will remain intact)
+5. Run `remove_submodules.py` it will remove all library submodules that are present in `drivers.txt` and `helpers.txt` (any libraries not in those files will remain intact)
 6. Run `git submodule foreach "python ../../../copy_release_making_files.py;python run_on_each.py"`
+
+To run it against the rest of the full set (without duplicates). Repeat the above process, but remove all except the libraries completed from the txt files.
